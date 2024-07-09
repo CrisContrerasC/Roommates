@@ -48,18 +48,22 @@ export const deleteGasto = async (req, res) => {
 }
 
 export const putGasto = async (req, res) => {
-  /* console.log("Salida req body: ", req.body);
-  console.log("Salida req query: ", req.query);
-  console.log("Salida req params: ", req.params);
+  //console.log("Salida req body: ", req);
+  // console.log("Salida req body: ", req.body);
+  //console.log("Salida req query: ", req.query);
+
   try {
     const { id } = req.query;
-    //const { roommate, descripcion, monto } = req.body;
-    console.log("Id recibido en el controlador:", id);
+    const { roommate, descripcion, monto } = req.body;
+    //console.log("Id recibido en el controlador:", id);
     //console.log("roommate, descripcion, monto: ", roommate, descripcion, monto);
-    const response = await Put_Gasto(id,{ roommate, descripcion, monto });
+    const response = await Put_Gasto(id, roommate, descripcion, monto);
     console.log("response.rows: ", response.rows);
-    res.status(200).send(response.rows);
+    res.status(200).send({
+      message: "Gasto actualizado con éxito",
+      gastos,
+    });
   } catch (error) {
     res.status(500).json({ error: "Error al actualizar el gasto" });
-  }  */
+  }
 }

@@ -1,4 +1,4 @@
-/* EL PUT NO FUNCIONA LA CONEXIÓN DE LA RUTA PUT*/
+
 
 // Importamos express
 import express from 'express';
@@ -50,7 +50,7 @@ class Server {
             rootGetGastos:'/gastos',
             rootPostGasto: '/gasto',
             rootDelete:'/gasto',
-            rootPut:'/gasto'
+            rootPut:'/gastoEdit'
              
             
             
@@ -63,10 +63,12 @@ class Server {
 
 
     middlewares(){
+        //console.log("Salida express.json",express.json())
         this.app.use( express.json() );
         this.app.use( express.static('public') );
         this.app.use( express.urlencoded({ extended: true }));
         this.app.use('/jquery',express.static(  `${__dirname}/../node_modules/jquery/dist`  ));
+        this.app.use('/axios',express.static(  `${__dirname}/../node_modules/axios/dist`  ));
     }
 
 

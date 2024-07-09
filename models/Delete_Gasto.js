@@ -17,7 +17,7 @@ const Delete_Gasto = (id) => {
 
   console.log("salida id: ", id);
   try {
-    let database = JSON.parse(fs.readFileSync(path, "utf-8"));
+    const database = JSON.parse(fs.readFileSync(path, "utf-8"));
     console.log("salida database: ", database);
     if (id === -1) {
       throw new Error('No se encontro gasto')
@@ -26,8 +26,8 @@ const Delete_Gasto = (id) => {
       //Buscar el gasto asociado al id y obtener el monto del gasto
       database.forEach(element => {
         if (element.id === id) {
-          let monto = element.monto
-          let nombre = element.roommate
+          const monto = element.monto
+          const nombre = element.roommate
            //Obtener roomates.json para luego eliminar el gasto
       const roommates = fs.readFileSync(roommatesPath, "utf-8")
       
@@ -42,7 +42,7 @@ const Delete_Gasto = (id) => {
             roommate.recibe = 0
           }
           roommate.recibe -= montoADividir;
-          roommate.total -= monto;
+          //roommate.total -= monto;
         } else {
           if (!roommate.debe) {
             roommate.debe = 0
@@ -51,16 +51,22 @@ const Delete_Gasto = (id) => {
         }
 
       })
-      fs.writeFileSync(roommatesPath, JSON.stringify(roommatesJSON));       
-        }
+      console.log("Salida roommatesJSON: ", roommatesJSON);
+      fs.writeFileSync(roommatesPath, JSON.stringify(roommatesJSON)); 
+      console.log("roommates.json updated successfully");
+           
+      }
       });
       
     }
     database.splice(id, 1)
+    console.log("Salida database actualizada", database)
     fs.writeFileSync(path, JSON.stringify(database))
-    res.send(`El gasto ${nombre} se elimino correctamente.`)
-  }
+    console.log("gastos.json updated successfully");
+    return database
 
+  }
+ 
 
   catch (error) {
     res.status(400).json({ error: error.message })

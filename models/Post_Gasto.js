@@ -51,7 +51,7 @@ const Post_Gasto = async (roommate) => {
                         roommate.recibe = 0
                     }
                     roommate.recibe += montoADividir;
-                    roommate.total += roommate.monto;
+                    //roommate.total += roommate.monto;
                 } else {
                     if(!roommate.debe){
                         roommate.debe = 0
