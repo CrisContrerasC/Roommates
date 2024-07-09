@@ -20,7 +20,7 @@ const Post_Gasto = async (roommate) => {
     try {
         if (!fs.existsSync(path)) {
 
-            const emptyData = []; // An empty object to write to the JSON file
+            const emptyData = []; 
 
             fs.writeFileSync(path, JSON.stringify(emptyData, null, 2), 'utf8');
 
@@ -51,7 +51,7 @@ const Post_Gasto = async (roommate) => {
                         roommate.recibe = 0
                     }
                     roommate.recibe += montoADividir;
-                    //roommate.total += roommate.monto;
+                   
                 } else {
                     if(!roommate.debe){
                         roommate.debe = 0

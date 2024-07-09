@@ -42,7 +42,7 @@ const Delete_Gasto = (id) => {
             roommate.recibe = 0
           }
           roommate.recibe -= montoADividir;
-          //roommate.total -= monto;
+         
         } else {
           if (!roommate.debe) {
             roommate.debe = 0

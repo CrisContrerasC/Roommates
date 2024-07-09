@@ -50,7 +50,7 @@ const Put_Gasto = async (id, roommate, descripcion, monto) => {
             roommates.forEach(e => {
                 if (e.nombre === roommate) {
                     e.recibe = (e.recibe || 0) + reajusteRoommates;
-                   // e.total = (e.total || 0) + (monto - montoOriginal);
+                  
                 } else {
                     e.debe = (e.debe || 0) + reajusteRoommates;
                 }
